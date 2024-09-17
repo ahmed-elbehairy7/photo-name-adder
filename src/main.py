@@ -1,15 +1,14 @@
-from os import listdir
-from os.path import join, splitext
-from get_dir import get_dir
-from write import write
+from PySide6.QtWidgets import QApplication
+from main_widget import MainWidget
+from sys import exit
 
 
 def main():
-    dir = get_dir()
-    output_dir = "test/output"
-
-    for image in listdir(dir):
-        write(join(dir, image), join(output_dir, image), splitext(image)[0])
+    app = QApplication([])
+    widget = MainWidget()
+    widget.resize(200, 200)
+    widget.show()
+    exit(app.exec())
 
 
 if __name__ == "__main__":
